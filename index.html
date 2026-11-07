@@ -3,79 +3,246 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Control 2026</title>
+	<meta name="theme-color" content="#f3f2ec">
+	<title>Control Electoral 2026</title>
 	<style>
+		:root {
+			color-scheme: light;
+			--paper: #f3f2ec;
+			--ink: #1d2925;
+			--green: #245347;
+			--red: #c64b3c;
+			--muted: #64716b;
+			--line: #d7d9d1;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
 		html,
 		body {
-			width: 100%;
-			height: 100%;
+			min-height: 100%;
 			margin: 0;
-			overflow: hidden;
 		}
 
-		iframe {
-			display: block;
-			width: 100%;
-			height: 100vh;
-			height: 100dvh;
-			border: 0;
+		body {
+			min-height: 100vh;
+			min-height: 100dvh;
+			display: flex;
+			flex-direction: column;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: "Trebuchet MS", sans-serif;
 		}
 
-		.mobile-gateway {
-			display: none;
+		.site-header,
+		.site-footer {
+			width: min(1120px, calc(100% - 48px));
+			margin: 0 auto;
 		}
 
-		@media (max-width: 767px) {
-			html,
-			body {
-				height: 100%;
-				overflow: auto;
+		.site-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 88px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.brand-mark {
+			width: 38px;
+			height: 38px;
+			display: grid;
+			place-items: center;
+			border-left: 4px solid var(--red);
+			background: var(--green);
+			color: #fff;
+			font-size: 13px;
+		}
+
+		.header-year {
+			color: var(--muted);
+			font-size: 12px;
+			font-weight: 700;
+		}
+
+		main {
+			width: min(1120px, calc(100% - 48px));
+			flex: 1;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+			align-items: center;
+			gap: 64px;
+			padding: 72px 0;
+		}
+
+		.eyebrow {
+			margin: 0 0 20px;
+			color: var(--red);
+			font-size: 12px;
+			font-weight: 700;
+		}
+
+		h1 {
+			max-width: 600px;
+			margin: 0;
+			font-family: Georgia, serif;
+			font-size: 64px;
+			font-weight: 400;
+			line-height: 1.04;
+		}
+
+		.intro {
+			margin: 22px 0 32px;
+			color: var(--muted);
+			font-size: 18px;
+			line-height: 1.5;
+		}
+
+		.access-link {
+			min-height: 52px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 24px;
+			padding: 0 20px;
+			background: var(--green);
+			color: #fff;
+			font-size: 15px;
+			font-weight: 700;
+			text-decoration: none;
+			transition: background-color 160ms ease, transform 160ms ease;
+		}
+
+		.access-link:hover {
+			transform: translateY(-2px);
+			background: #183f35;
+		}
+
+		.access-link:focus-visible {
+			outline: 3px solid var(--red);
+			outline-offset: 4px;
+		}
+
+		.access-arrow {
+			font-size: 20px;
+			font-weight: 400;
+		}
+
+		.year-art {
+			position: relative;
+			min-height: 280px;
+			display: grid;
+			align-content: center;
+			padding-left: 32px;
+			border-left: 1px solid var(--line);
+		}
+
+		.year-art::before {
+			position: absolute;
+			top: 50%;
+			left: -2px;
+			width: 4px;
+			height: 56px;
+			background: var(--red);
+			content: "";
+			transform: translateY(-50%);
+		}
+
+		.year-art strong {
+			color: var(--green);
+			font-family: Georgia, serif;
+			font-size: 112px;
+			font-weight: 400;
+			line-height: 1;
+		}
+
+		.year-art span {
+			margin-top: 16px;
+			color: var(--muted);
+			font-size: 12px;
+			font-weight: 700;
+		}
+
+		.site-footer {
+			padding: 20px 0;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		@media (max-width: 700px) {
+			.site-header,
+			.site-footer,
+			main {
+				width: min(100% - 40px, 520px);
 			}
 
-			iframe {
-				display: none;
+			.site-header {
+				min-height: 72px;
 			}
 
-			.mobile-gateway {
-				box-sizing: border-box;
-				min-height: 100vh;
-				min-height: 100dvh;
-				display: grid;
-				align-content: center;
-				justify-items: center;
-				gap: 1.25rem;
-				padding: 1.5rem;
-				font-family: system-ui, sans-serif;
-				text-align: center;
+			main {
+				grid-template-columns: 1fr;
+				gap: 40px;
+				padding: 56px 0;
 			}
 
-			.mobile-gateway h1 {
-				margin: 0;
-				font-size: 1.5rem;
+			h1 {
+				font-size: 46px;
 			}
 
-			.mobile-gateway a {
-				padding: 0.85rem 1.25rem;
-				border-radius: 4px;
-				background: #183b56;
-				color: #fff;
-				font-weight: 600;
-				text-decoration: none;
+			.intro {
+				font-size: 16px;
 			}
 
-			.mobile-gateway p {
-				margin: 0;
-				color: #555;
+			.access-link {
+				width: 100%;
+			}
+
+			.year-art {
+				min-height: 160px;
+				padding-left: 22px;
+			}
+
+			.year-art strong {
+				font-size: 76px;
 			}
 		}
 	</style>
 </head>
 <body>
-	<iframe src="https://aplicacionesutc.com/control2026/" title="Control 2026"></iframe>
-	<main class="mobile-gateway">
-		<h1>Control 2026</h1>
-		<a href="https://aplicacionesutc.com/control2026/" target="_blank" rel="noopener noreferrer">Abrir sistema</a>
-		<p>Se abrirá en una pestaña nueva.</p>
+	<header class="site-header">
+		<div class="brand">
+			<span class="brand-mark" aria-hidden="true">CE</span>
+			<span>Control Electoral</span>
+		</div>
+		<span class="header-year">PORTAL 2026</span>
+	</header>
+	<main>
+		<section aria-labelledby="welcome-title">
+			<p class="eyebrow">JORNADA ELECTORAL · 2026</p>
+			<h1 id="welcome-title">Control<br>Electoral</h1>
+			<p class="intro">Bienvenido al portal de Control Electoral 2026.</p>
+			<a class="access-link" href="https://aplicacionesutc.com/control2026/index.php/accesos/login" target="_blank" rel="noopener noreferrer">
+				Ingresar al sistema <span class="access-arrow" aria-hidden="true">↗</span>
+			</a>
+		</section>
+		<div class="year-art" aria-hidden="true">
+			<strong>2026</strong>
+			<span>CONTROL ELECTORAL</span>
+		</div>
 	</main>
+	<footer class="site-footer">Control Electoral · 2026</footer>
 </body>
 </html>
