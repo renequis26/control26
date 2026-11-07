@@ -4,11 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Control 2026</title>
-	<script>
-		if (window.matchMedia("(max-width: 767px)").matches) {
-			window.location.replace("https://aplicacionesutc.com/control2026/");
-		}
-	</script>
 	<style>
 		html,
 		body {
@@ -25,9 +20,62 @@
 			height: 100dvh;
 			border: 0;
 		}
+
+		.mobile-gateway {
+			display: none;
+		}
+
+		@media (max-width: 767px) {
+			html,
+			body {
+				height: 100%;
+				overflow: auto;
+			}
+
+			iframe {
+				display: none;
+			}
+
+			.mobile-gateway {
+				box-sizing: border-box;
+				min-height: 100vh;
+				min-height: 100dvh;
+				display: grid;
+				align-content: center;
+				justify-items: center;
+				gap: 1.25rem;
+				padding: 1.5rem;
+				font-family: system-ui, sans-serif;
+				text-align: center;
+			}
+
+			.mobile-gateway h1 {
+				margin: 0;
+				font-size: 1.5rem;
+			}
+
+			.mobile-gateway a {
+				padding: 0.85rem 1.25rem;
+				border-radius: 4px;
+				background: #183b56;
+				color: #fff;
+				font-weight: 600;
+				text-decoration: none;
+			}
+
+			.mobile-gateway p {
+				margin: 0;
+				color: #555;
+			}
+		}
 	</style>
 </head>
 <body>
 	<iframe src="https://aplicacionesutc.com/control2026/" title="Control 2026"></iframe>
+	<main class="mobile-gateway">
+		<h1>Control 2026</h1>
+		<a href="https://aplicacionesutc.com/control2026/" target="_blank" rel="noopener noreferrer">Abrir sistema</a>
+		<p>Se abrirá en una pestaña nueva.</p>
+	</main>
 </body>
 </html>
